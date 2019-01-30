@@ -14,18 +14,19 @@ df = pd.DataFrame(dados, columns = newfeature)
 df.head()
 
 agregar = df.groupby("MedInc").agg(["max"])  
-agregar
+print(agregar)
 
 # Sampling
 print("-----------------SAMPLING----------------\n", np.random.random_sample())
 
-df.loc[0:9,["MedInc","Population"]]
+print(df.loc[0:9,["MedInc","Population"]])
 
+print(df.sort_values("Population").iloc[0:4,:])
 
-df.sort_values("Population").iloc[0:4,:]
-
-df.groupby("AveRooms")["AveBedrms"].transform('sum')
+print(df.groupby("AveRooms")["AveBedrms"].transform('sum'))
 
 df["total_quartos"] = df.groupby('AveRooms')["AveBedrms"].transform('sum')
 
 df["Percent_of_Order"] = df["AveBedrms"] / df["AveRooms"]
+
+print(df)
